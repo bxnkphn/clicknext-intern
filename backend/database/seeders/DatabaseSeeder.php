@@ -15,10 +15,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         \App\Models\User::factory()->create([
-            'email' => 'admin@gmail.com',
+            'email' => 'mentor@clicknext.com',
             'password' => bcrypt('123456'),
             'balance' => 1000.00,
         ]);

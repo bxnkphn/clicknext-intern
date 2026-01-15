@@ -42,8 +42,6 @@ const validateForm = () => {
   return isValid;
 };
 
-// ... import code ...
-
 const handleLogin = async () => {
   if (!validateForm()) return;
 
@@ -68,10 +66,11 @@ const handleLogin = async () => {
       localStorage.setItem("user_token", data.token);
       localStorage.setItem("user_data", JSON.stringify(data.user));
 
-      alert("เข้าสู่ระบบสำเร็จ!");
+      router.push('/banking');
     } else {
       alert(data.message || "การเข้าสู่ระบบล้มเหลว");
     }
+  
   } catch (error) {
     console.error('Error:', error);
     alert("ไม่สามารถเชื่อมต่อเซิร์ฟเวอร์ได้");
