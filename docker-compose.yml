@@ -33,25 +33,33 @@ services:
     command: >
       sh -c "
       echo 'Starting Setup Process...';
+      echo '--------------------------------------';
       
       echo '1. Checking Environment File...';
-      cp -n .env.example .env || true;
+      echo '--------------------------------------';
+      cp -n .env.example .env || true;      
       
-      echo '2. Installing Dependencies (Wait ~1-2 mins)...';
+      echo '2. Installing Dependencies...';
+      echo '--------------------------------------';
       composer install --no-interaction --prefer-dist;
       
       echo '3️. Generating App Key...';
+      echo '--------------------------------------';
       php artisan key:generate --force;
       
-      echo '4️. Waiting for Database to be ready (30s)...';
+      echo '4️. Waiting for Database to be ready...';
+      echo '--------------------------------------';
       sleep 30; 
       
       echo '5. Migrating & Seeding Database...';
+      echo '--------------------------------------';
       php artisan migrate:fresh --seed --force;
       php artisan config:clear;
       php artisan cache:clear;
       
-      echo 'Setup Complete! Starting Server...';
+      echo '--------------------------------------';
+      echo '🚀 Setup Complete! Starting Server...';
+      echo '--------------------------------------';
       php artisan serve --host=0.0.0.0 --port=8000
       "
 
